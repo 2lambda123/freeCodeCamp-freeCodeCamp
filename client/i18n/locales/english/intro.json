@@ -1759,7 +1759,12 @@
           "In this lab, you will build an event hub using semantic HTML."
         ]
       },
-      "ijdq": { "title": "14", "intro": [] },
+      "review-semantic-html": {
+        "title": "Semantic HTML Review",
+        "intro": [
+          "Review the Semantic HTML concepts to prepare for the upcoming quiz."
+        ]
+      },
       "quiz-semantic-html": {
         "title": "Semantic HTML Quiz",
         "intro": [
