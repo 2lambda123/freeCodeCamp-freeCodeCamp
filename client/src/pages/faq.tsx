@@ -25,7 +25,7 @@ function FAQPage(): JSX.Element {
         className='faq-section'
       >
         <h2 className='big-heading'>{t('landing.faq')}</h2>
-        <Spacer size='s' />
+        <Spacer size='xs' />
         {faqItems.map((faq, i) => (
           <div
             data-test-label='landing-page-faq'
@@ -36,7 +36,7 @@ function FAQPage(): JSX.Element {
             {faq.answer.map((answer, i) => (
               <p key={i}>{answer}</p>
             ))}
-            <Spacer size='s' />
+            <Spacer size='xs' />
           </div>
         ))}
         <h2 className='landing-page-happy'>{t('learn.read-this.p12')}</h2>
