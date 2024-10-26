@@ -1,8 +1,8 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { Spacer } from '@freecodecamp/ui';
 
 import { parseBlanks } from '../fill-in-the-blank/parse-blanks';
-import Spacer from '../../../components/helpers/spacer';
 import PrismFormatted from '../components/prism-formatted';
 import { FillInTheBlank } from '../../../redux/prop-types';
 import ChallengeHeading from './challenge-heading';
@@ -32,13 +32,22 @@ function FillInTheBlanks({
     return '';
   };
 
+  const getInputLabel = (index: number) => {
+    if (answersCorrect[index] === true)
+      return t('learn.fill-in-the-blank.correct-answer');
+    if (answersCorrect[index] === false)
+      return t('learn.fill-in-the-blank.incorrect-answer');
+
+    return t('learn.fill-in-the-blank.blank');
+  };
+
   const paragraphs = parseBlanks(sentence);
   const blankAnswers = blanks.map(b => b.answer);
 
   return (
     <>
-      <ChallengeHeading heading={t('learn.fill-in-the-blank')} />
-      <Spacer size='small' />
+      <ChallengeHeading heading={t('learn.fill-in-the-blank.heading')} />
+      <Spacer size='xs' />
       <div className='fill-in-the-blank-wrap'>
         {paragraphs.map((p, i) => {
           return (
@@ -60,7 +69,7 @@ function FillInTheBlanks({
                       onChange={handleInputChange}
                       data-index={node.value}
                       size={blankAnswers[value].length}
-                      aria-label={t('learn.blank')}
+                      aria-label={getInputLabel(value)}
                     />
                   );
               })}
@@ -68,15 +77,15 @@ function FillInTheBlanks({
           );
         })}
       </div>
-      <Spacer size='medium' />
-      {showFeedback && feedback && (
-        <>
-          <PrismFormatted text={feedback} />
-          <Spacer size='medium' />
-        </>
-      )}
-      <div className='text-center'>
-        {showWrong && <span>{t('learn.wrong-answer')}</span>}
+      <Spacer size='m' />
+      <div aria-live='polite'>
+        {showWrong && (
+          <div className='text-center'>
+            <span>{t('learn.wrong-answer')}</span>
+            <Spacer size='m' />
+          </div>
+        )}
+        {showFeedback && feedback && <PrismFormatted text={feedback} />}
       </div>
     </>
   );
