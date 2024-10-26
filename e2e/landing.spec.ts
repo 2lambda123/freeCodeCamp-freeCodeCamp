@@ -143,7 +143,7 @@ test.describe('Landing Page', () => {
     const ctas = page.getByRole('link', {
       name: translations.buttons['logged-in-cta-btn']
     });
-    await expect(ctas).toHaveCount(4);
+    await expect(ctas).toHaveCount(3);
     for (const cta of await ctas.all()) {
       await expect(cta).toBeVisible();
     }
@@ -228,6 +228,7 @@ test.describe('Landing Page', () => {
   });
 
   test('Has FAQ section', async ({ page }) => {
+    await page.goto('/faq');
     const faqs = page.getByTestId(landingPageElements.faq);
     await expect(faqs).toHaveCount(9);
   });
