@@ -19,8 +19,8 @@
   "author": "freeCodeCamp <team@freecodecamp.org>",
   "main": "none",
   "devDependencies": {
-    "debug": "4.3.4",
+    "debug": "2.6.9",
     "dotenv": "16.4.5",
-    "mongodb": "6.10.0"
+    "mongodb": "3.6.10"
   }
 }
